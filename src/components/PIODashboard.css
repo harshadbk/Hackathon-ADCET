@@ -1,0 +1,566 @@
+/* =====================================================
+   PIO DASHBOARD COMPONENT STYLES
+===================================================== */
+
+.pio-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* Dashboard Header */
+.pio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+}
+
+.pio-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pio-title h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.pio-title p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.pio-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.pio-btn {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pio-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.pio-btn.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.pio-btn.secondary:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+/* PIO Stats */
+.pio-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pio-stat-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.pio-stat-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.pio-stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
+
+.pio-stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pio-stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+}
+
+.pio-stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pio-stat-change {
+  font-size: 11px;
+  color: var(--success);
+  font-weight: 600;
+}
+
+.pio-stat-change.negative {
+  color: var(--danger);
+}
+
+/* Main Content Grid */
+.pio-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 28px;
+}
+
+/* Requests Section */
+.pio-requests-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pio-requests-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pio-requests-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.pio-view-options {
+  display: flex;
+  gap: 8px;
+}
+
+.view-option-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.view-option-btn:hover,
+.view-option-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* Requests List */
+.pio-requests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pio-request-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pio-request-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  transform: translateX(4px);
+}
+
+.pio-request-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pio-request-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pio-request-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+.pio-request-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pio-action-btn {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.pio-action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* Sidebar */
+.pio-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pio-sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pio-sidebar-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pio-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pio-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.pio-info-label {
+  color: var(--muted);
+}
+
+.pio-info-value {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Quick Links */
+.pio-quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pio-quick-link {
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pio-quick-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.pio-link-icon {
+  font-size: 14px;
+}
+
+/* Performance Chart */
+.pio-performance-chart {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.pio-chart-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pio-chart-placeholder {
+  height: 200px;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 1200px) {
+  .pio-dashboard-container {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .pio-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .pio-content-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .pio-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .pio-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .pio-btn {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .pio-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pio-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .pio-dashboard-container {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .pio-title h1 {
+    font-size: 22px;
+  }
+
+  .pio-title p {
+    font-size: 12px;
+  }
+
+  .pio-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pio-stat-card {
+    padding: 16px;
+  }
+
+  .pio-request-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pio-request-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .pio-sidebar {
+    grid-template-columns: repeat(2, 1fr);
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 480px) {
+  .pio-dashboard-container {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .pio-title h1 {
+    font-size: 18px;
+  }
+
+  .pio-title p {
+    font-size: 11px;
+  }
+
+  .pio-actions {
+    gap: 8px;
+  }
+
+  .pio-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+    flex: 1;
+  }
+
+  .pio-stats-grid {
+    gap: 12px;
+  }
+
+  .pio-stat-card {
+    padding: 12px;
+  }
+
+  .pio-stat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .pio-stat-label {
+    font-size: 10px;
+  }
+
+  .pio-stat-value {
+    font-size: 20px;
+  }
+
+  .pio-requests-title {
+    font-size: 14px;
+  }
+
+  .pio-request-item {
+    padding: 12px;
+  }
+
+  .pio-request-title {
+    font-size: 13px;
+  }
+
+  .pio-request-meta {
+    font-size: 11px;
+    gap: 8px;
+  }
+
+  .pio-action-btn {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .pio-sidebar {
+    flex-direction: column;
+  }
+
+  .pio-sidebar-card {
+    padding: 12px;
+  }
+
+  .pio-sidebar-title {
+    font-size: 12px;
+  }
+
+  .pio-info-item {
+    font-size: 11px;
+  }
+
+  .pio-quick-link {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .pio-link-icon {
+    font-size: 12px;
+  }
+
+  .pio-chart-title {
+    font-size: 13px;
+  }
+
+  .pio-chart-placeholder {
+    height: 150px;
+    font-size: 12px;
+  }
+}

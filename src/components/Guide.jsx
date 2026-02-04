@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+import './Guide.css'
+
 export default function Guide({ onBack }) {
+  const navigate = useNavigate()
   return (
     <div className="card">
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'start',marginBottom:20}}>
@@ -6,7 +10,10 @@ export default function Guide({ onBack }) {
           <h1 className="h1">📚 RTI Guide & Resources</h1>
           <p className="small-muted">Learn how to file Right to Information requests effectively.</p>
         </div>
-        <button className="btn ghost" onClick={onBack}>← Back</button>
+        <button className="btn ghost" onClick={() => {
+          onBack()
+          navigate(-1)
+        }}>← Back</button>
       </div>
 
       <div className="grid">

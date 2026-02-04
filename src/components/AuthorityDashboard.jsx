@@ -1,4 +1,5 @@
 import RequestCard from './RequestCard'
+import './AuthorityDashboard.css'
 
 export default function AuthorityDashboard({ requests, onOpen, user, onLogout }) {
   const appealedCount = requests.filter(r => r.status === 'appealed').length

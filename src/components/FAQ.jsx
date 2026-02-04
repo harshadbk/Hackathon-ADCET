@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './FAQ.css'
 
 export default function FAQ({ onBack }) {
+  const navigate = useNavigate()
   const [expanded, setExpanded] = useState(null)
 
   const faqs = [
@@ -53,7 +56,10 @@ export default function FAQ({ onBack }) {
           <h1 className="h1">❓ Frequently Asked Questions</h1>
           <p className="small-muted">Get answers to common RTI questions.</p>
         </div>
-        <button className="btn ghost" onClick={onBack}>← Back</button>
+        <button className="btn ghost" onClick={() => {
+          onBack()
+          navigate(-1)
+        }}>← Back</button>
       </div>
 
       <div style={{maxWidth:'800px'}}>

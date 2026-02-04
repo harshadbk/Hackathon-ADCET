@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './styles/rtia.css'
 import './styles/responsive.css'
 import Login from './components/Login'
@@ -14,8 +15,9 @@ import PIODashboard from './components/PIODashboard'
 import AuthorityDashboard from './components/AuthorityDashboard'
 import { loadRequests, saveRequests } from './utils/storage'
 import mockRequests from './data/mockRequests'
+import LandingPage from './components/LandingPage'
 
-export default function App() {
+function AppContent() {
   const [user, setUser] = useState(null)
   const [view, setView] = useState('dashboard')
   const [requests, setRequests] = useState([])
@@ -70,7 +72,11 @@ export default function App() {
   if (!user) {
     return (
       <div className="app-root">
-        <Login onLogin={setUser} />
+        <Routes>
+          <Route path="/" element={<LandingPage onLogin={setUser} />} />
+          <Route path="/login" element={<Login onLogin={setUser} />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </div>
     )
   }
@@ -96,19 +102,32 @@ export default function App() {
             <button className="btn ghost" onClick={handleLogout}>Logout</button>
           </div>
           <main className="container">
-            <AuthorityDashboard
-              requests={requests}
-              onOpen={openDetail}
-              user={user}
-              onLogout={handleLogout}
-            />
-            {view === 'detail' && selectedId && (
-              <RequestDetail
-                request={requests.find((r) => r.id === selectedId)}
-                onBack={() => setView('dashboard')}
-                onUpdate={updateRequest}
+            <Routes>
+              <Route
+                path="/dashboard"
+                element={
+                  <AuthorityDashboard
+                    requests={requests}
+                    onOpen={openDetail}
+                    user={user}
+                    onLogout={handleLogout}
+                  />
+                }
               />
-            )}
+              <Route
+                path="/detail/:id"
+                element={
+                  selectedId && (
+                    <RequestDetail
+                      request={requests.find((r) => r.id === selectedId)}
+                      onBack={() => window.history.back()}
+                      onUpdate={updateRequest}
+                    />
+                  )
+                }
+              />
+              <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            </Routes>
             <footer className="footer-note">
               RTI Appellate Authority © 2024 — Ensuring fair RTI implementation 🇮🇳
             </footer>
@@ -128,19 +147,32 @@ export default function App() {
             <button className="btn ghost" onClick={handleLogout}>Logout</button>
           </div>
           <main className="container">
-            <PIODashboard
-              requests={requests}
-              onOpen={openDetail}
-              user={user}
-              onLogout={handleLogout}
-            />
-            {view === 'detail' && selectedId && (
-              <RequestDetail
-                request={requests.find((r) => r.id === selectedId)}
-                onBack={() => setView('dashboard')}
-                onUpdate={updateRequest}
+            <Routes>
+              <Route
+                path="/dashboard"
+                element={
+                  <PIODashboard
+                    requests={requests}
+                    onOpen={openDetail}
+                    user={user}
+                    onLogout={handleLogout}
+                  />
+                }
               />
-            )}
+              <Route
+                path="/detail/:id"
+                element={
+                  selectedId && (
+                    <RequestDetail
+                      request={requests.find((r) => r.id === selectedId)}
+                      onBack={() => window.history.back()}
+                      onUpdate={updateRequest}
+                    />
+                  )
+                }
+              />
+              <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            </Routes>
             <footer className="footer-note">
               RTI Management System © 2024 — Streamlining RTI processes 🇮🇳
             </footer>
@@ -160,42 +192,63 @@ export default function App() {
             }}
           />
           <main className="container">
-            {view === 'dashboard' && (
-              <Dashboard
-                requests={requests}
-                onNew={() => setView('draft')}
-                onOpen={openDetail}
-                onTrack={() => setView('tracker')}
+            <Routes>
+              <Route
+                path="/dashboard"
+                element={
+                  <Dashboard
+                    requests={requests}
+                    onNew={() => setView('draft')}
+                    onOpen={openDetail}
+                    onTrack={() => setView('tracker')}
+                  />
+                }
               />
-            )}
-
-            {view === 'draft' && (
-              <DraftAssistant
-                onSubmit={(payload) => addRequest(payload)}
-                onBack={() => setView('dashboard')}
+              <Route
+                path="/draft"
+                element={
+                  <DraftAssistant
+                    onSubmit={(payload) => addRequest(payload)}
+                    onBack={() => setView('dashboard')}
+                  />
+                }
               />
-            )}
-
-            {view === 'tracker' && (
-              <Tracker
-                requests={requests}
-                onOpen={openDetail}
-                onUpdate={updateRequest}
+              <Route
+                path="/tracker"
+                element={
+                  <Tracker
+                    requests={requests}
+                    onOpen={openDetail}
+                    onUpdate={updateRequest}
+                  />
+                }
               />
-            )}
-
-            {view === 'detail' && selectedId && (
-              <RequestDetail
-                request={requests.find((r) => r.id === selectedId)}
-                onBack={() => setView('dashboard')}
-                onUpdate={updateRequest}
+              <Route
+                path="/detail/:id"
+                element={
+                  selectedId && (
+                    <RequestDetail
+                      request={requests.find((r) => r.id === selectedId)}
+                      onBack={() => window.history.back()}
+                      onUpdate={updateRequest}
+                    />
+                  )
+                }
               />
-            )}
-
-            {view === 'guide' && <Guide onBack={() => setView('dashboard')} />}
-            {view === 'faq' && <FAQ onBack={() => setView('dashboard')} />}
-            {view === 'about' && <About onBack={() => setView('dashboard')} />}
-
+              <Route
+                path="/guide"
+                element={<Guide onBack={() => window.history.back()} />}
+              />
+              <Route
+                path="/faq"
+                element={<FAQ onBack={() => window.history.back()} />}
+              />
+              <Route
+                path="/about"
+                element={<About onBack={() => window.history.back()} />}
+              />
+              <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            </Routes>
             <footer className="footer-note">
               RTI Assistant © 2024 — Empowering citizens to exercise their Right to Information 🇮🇳
             </footer>
@@ -203,5 +256,13 @@ export default function App() {
         </>
       )}
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   )
 }

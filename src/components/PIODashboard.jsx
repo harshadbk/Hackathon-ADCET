@@ -1,4 +1,5 @@
 import RequestCard from './RequestCard'
+import './PIODashboard.css'
 
 export default function PIODashboard({ requests, onOpen, user, onLogout }) {
   const myRequests = requests.filter(r => r.status === 'awaiting_response')

@@ -1,3 +1,5 @@
+import './RequestCard.css'
+
 function daysLeft(createdAt, deadlineDays = 30) {
   const created = new Date(createdAt)
   const deadline = new Date(created.getTime() + deadlineDays * 24 * 3600 * 1000)

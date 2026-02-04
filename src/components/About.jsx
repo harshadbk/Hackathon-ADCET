@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+import './About.css'
+
 export default function About({ onBack }) {
+  const navigate = useNavigate()
   return (
     <div className="card">
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'start',marginBottom:20}}>
@@ -6,7 +10,10 @@ export default function About({ onBack }) {
           <h1 className="h1">ℹ️ About RTI Assistant</h1>
           <p className="small-muted">Empowering citizens to exercise their Right to Information.</p>
         </div>
-        <button className="btn ghost" onClick={onBack}>← Back</button>
+        <button className="btn ghost" onClick={() => {
+          onBack()
+          navigate(-1)
+        }}>← Back</button>
       </div>
 
       <div className="grid">

@@ -1,3 +1,6 @@
+import { useNavigate } from 'react-router-dom'
+import './RequestDetail.css'
+
 function daysLeft(createdAt, deadlineDays = 30) {
   const created = new Date(createdAt)
   const deadline = new Date(created.getTime() + deadlineDays * 24 * 3600 * 1000)
@@ -6,6 +9,7 @@ function daysLeft(createdAt, deadlineDays = 30) {
 }
 
 export default function RequestDetail({ request, onBack, onUpdate }) {
+  const navigate = useNavigate()
   if (!request) return <div className="card">No request selected.</div>
 
   const left = daysLeft(request.createdAt, request.deadlineDays)
@@ -47,7 +51,10 @@ export default function RequestDetail({ request, onBack, onUpdate }) {
           <h1 className="h1">Request Details</h1>
           <div className="small-muted">Review, download, and manage your RTI request.</div>
         </div>
-        <button className="btn ghost" onClick={onBack}>← Back</button>
+        <button className="btn ghost" onClick={() => {
+          onBack()
+          navigate(-1)
+        }}>← Back</button>
       </div>
 
       <div className="grid">

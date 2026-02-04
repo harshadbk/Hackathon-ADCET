@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './DraftAssistant.css'
 
 const DEPT_MAP = [
   { q: ['school','education','student','teacher'], dept: 'Department of School Education', pio: 'PIO, District Education Office' },
@@ -16,6 +18,7 @@ function suggestDept(text) {
 }
 
 export default function DraftAssistant({ onSubmit, onBack }) {
+  const navigate = useNavigate()
   const [step, setStep] = useState(1)
   const [topic, setTopic] = useState('')
   const suggested = useMemo(() => suggestDept(topic || ''), [topic])
@@ -47,6 +50,7 @@ export default function DraftAssistant({ onSubmit, onBack }) {
       timeline: [{ at: new Date().toISOString(), text: 'RTI Filed', actor: 'citizen' }]
     }
     onSubmit(payload)
+    navigate('/dashboard')
   }
 
   return (
@@ -56,7 +60,10 @@ export default function DraftAssistant({ onSubmit, onBack }) {
           <h1 className="h1">RTI Drafting Assistant</h1>
           <div className="small-muted">Step-by-step guidance for writing your RTI request.</div>
         </div>
-        <button className="btn ghost" onClick={onBack}>← Back</button>
+        <button className="btn ghost" onClick={() => {
+          onBack()
+          navigate('/dashboard')
+        }}>← Back</button>
       </div>
 
       {step === 1 && (

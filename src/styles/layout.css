@@ -1,0 +1,242 @@
+/* =====================================================
+   MAIN LAYOUT & CENTERING
+   Container system for proper centered content
+===================================================== */
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* App Wrapper */
+.app-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centered Container */
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.container-full {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.container-narrow {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Content Section */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Page Content */
+.page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0;
+}
+
+.page-content-full {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* =====================================================
+   RESPONSIVE CONTAINERS
+===================================================== */
+
+/* Large Desktop (1200px+) */
+@media (max-width: 1400px) {
+  .container,
+  .container-narrow {
+    padding: 0 28px;
+  }
+}
+
+/* Desktop (1024px - 1199px) */
+@media (max-width: 1024px) {
+  .container,
+  .container-narrow {
+    padding: 0 24px;
+  }
+
+  .page-content {
+    padding: 24px 0;
+  }
+
+  .content-section {
+    gap: 24px;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 768px) {
+  .container,
+  .container-narrow {
+    padding: 0 20px;
+  }
+
+  .page-content {
+    padding: 20px 0;
+  }
+
+  .content-section {
+    gap: 20px;
+  }
+}
+
+/* Mobile (480px - 767px) */
+@media (max-width: 480px) {
+  .container,
+  .container-narrow {
+    padding: 0 16px;
+  }
+
+  .page-content {
+    padding: 16px 0;
+  }
+
+  .content-section {
+    gap: 16px;
+  }
+}
+
+/* Small Mobile (<480px) */
+@media (max-width: 360px) {
+  .container,
+  .container-narrow {
+    padding: 0 12px;
+  }
+
+  .page-content {
+    padding: 12px 0;
+  }
+
+  .content-section {
+    gap: 12px;
+  }
+}
+
+/* =====================================================
+   GRID LAYOUT CENTERING
+===================================================== */
+
+.grid-centered {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =====================================================
+   HEADER & FOOTER SPACING
+===================================================== */
+
+.header-spacing {
+  padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+  .header-spacing {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-spacing {
+    padding-top: 50px;
+  }
+}
+
+.footer-spacing {
+  margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .footer-spacing {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-spacing {
+    margin-top: 40px;
+  }
+}
+
+/* =====================================================
+   CONTENT WRAPPER
+===================================================== */
+
+.page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0;
+}
+
+.page-content-full {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* =====================================================
+   RESPONSIVE PAGE CONTENT
+===================================================== */
+
+@media (max-width: 1024px) {
+  .page-content {
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content {
+    padding: 16px 0;
+  }
+}

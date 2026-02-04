@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import RequestCard from './RequestCard'
+import './Dashboard.css'
 
 export default function Dashboard({ requests = [], onNew, onOpen, onTrack }) {
+  const navigate = useNavigate()
   const recent = requests.slice(0, 6)
   const responded = requests.filter(r => r.status === 'responded').length
   const pending = requests.filter(r => r.status === 'awaiting_response').length
@@ -8,6 +11,21 @@ export default function Dashboard({ requests = [], onNew, onOpen, onTrack }) {
     const left = Math.ceil((new Date(new Date(r.createdAt).getTime() + r.deadlineDays*24*3600*1000) - new Date())/(24*3600*1000))
     return left < 0 && r.status === 'awaiting_response'
   }).length
+
+  const handleOpenDetail = (id) => {
+    onOpen(id)
+    navigate(`/detail/${id}`)
+  }
+
+  const handleNewRTI = () => {
+    onNew()
+    navigate('/draft')
+  }
+
+  const handleTrack = () => {
+    onTrack()
+    navigate('/tracker')
+  }
 
   return (
     <div>
@@ -17,10 +35,10 @@ export default function Dashboard({ requests = [], onNew, onOpen, onTrack }) {
           <p className="small-muted">File, draft and track Right to Information requests with AI guidance. Empower yourself with transparency.</p>
         </div>
         <div className="flex-row" style={{gap:8,marginTop:0}}>
-          <button className="btn" onClick={onNew}>
+          <button className="btn" onClick={handleNewRTI}>
             <span>✍️</span> New RTI
           </button>
-          <button className="btn ghost" onClick={onTrack}>
+          <button className="btn ghost" onClick={handleTrack}>
             <span>⏰</span> Track
           </button>
         </div>
@@ -57,7 +75,7 @@ export default function Dashboard({ requests = [], onNew, onOpen, onTrack }) {
             ) : (
               <div className="list">
                 {recent.map(r => (
-                  <RequestCard key={r.id} request={r} onOpen={() => onOpen(r.id)} />
+                  <RequestCard key={r.id} request={r} onOpen={() => handleOpenDetail(r.id)} />
                 ))}
               </div>
             )}

@@ -1,0 +1,669 @@
+/* =====================================================
+   REQUEST CARD COMPONENT STYLES - LIGHT THEME
+   Modern Card Design with Colored Headers
+===================================================== */
+
+.request-card-container {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e0e7ff;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  cursor: pointer;
+  height: 100%;
+}
+
+.request-card-container:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Card Header with Colored Background */
+.card-header-section {
+  background: linear-gradient(135deg, #dbeafe 0%, #f0f9ff 100%);
+  padding: 16px;
+  border-bottom: 2px solid #3b82f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.card-title-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e40af;
+  line-height: 1.4;
+}
+
+.card-request-id {
+  font-size: 11px;
+  color: #60a5fa;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.card-status {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-status.pending {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.card-status.completed {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.card-status.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.card-status::before {
+  content: '●';
+  font-size: 8px;
+}
+
+/* Card Info Section */
+.card-info {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.card-info-label {
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-size: 10px;
+}
+
+.card-info-value {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.card-info-value.muted {
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Progress Section */
+.card-progress-section {
+  padding: 0 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Card Footer */
+.card-footer {
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-meta {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.card-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.card-action-btn {
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-action-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Priority Indicator */
+.priority-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.priority-high {
+  background: #dc2626;
+}
+
+.priority-medium {
+  background: #f59e0b;
+}
+
+.priority-low {
+  background: #16a34a;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 1024px) {
+  .request-card-container {
+    border-radius: 12px;
+  }
+
+  .card-header-section {
+    padding: 14px;
+  }
+
+  .card-title {
+    font-size: 13px;
+  }
+
+  .card-info {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .card-info-row {
+    font-size: 12px;
+  }
+
+  .card-info-label {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 768px) {
+  .request-card-container {
+    border-radius: 12px;
+  }
+
+  .card-header-section {
+    padding: 12px;
+    flex-direction: column;
+  }
+
+  .card-status {
+    align-self: flex-start;
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  .card-title {
+    font-size: 13px;
+  }
+
+  .card-request-id {
+    font-size: 10px;
+  }
+
+  .card-info {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .card-info-row {
+    font-size: 12px;
+  }
+
+  .card-footer {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .card-meta {
+    font-size: 10px;
+    gap: 6px;
+  }
+
+  .card-action-btn {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .request-card-container {
+    border-radius: 10px;
+  }
+
+  .card-header-section {
+    padding: 12px;
+    border-bottom: 2px solid #3b82f6;
+  }
+
+  .card-title {
+    font-size: 12px;
+  }
+
+  .card-request-id {
+    font-size: 9px;
+  }
+
+  .card-status {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+
+  .card-info {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .card-info-row {
+    font-size: 11px;
+  }
+
+  .card-info-label {
+    font-size: 8px;
+  }
+
+  .card-info-value {
+    font-size: 11px;
+  }
+
+  .progress-label {
+    font-size: 10px;
+  }
+
+  .progress-bar-container {
+    height: 6px;
+  }
+
+  .card-footer {
+    padding: 10px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .card-meta {
+    font-size: 9px;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .card-action-btn {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+}
+
+/* Card Header */
+.card-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.card-title-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 4px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-request-id {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: linear-gradient(135deg, #dbeafe 0%, #f0f9ff 100%);
+  color: #0c4a6e;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.card-status.pending {
+  background: linear-gradient(135deg, #fef3c7 0%, #fefce8 100%);
+  color: #92400e;
+}
+
+.card-status.completed {
+  background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%);
+  color: #166534;
+}
+
+.card-status.rejected {
+  background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%);
+  color: #991b1b;
+}
+
+/* Card Info */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.card-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.card-info-label {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.card-info-value {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.card-info-value.muted {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+/* Card Progress */
+.card-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progress-label {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-bar-container {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #5b7dff);
+  width: 60%;
+  transition: width 0.3s ease;
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.card-meta {
+  display: flex;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.card-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.card-action-btn {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--muted);
+}
+
+.card-action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* Priority Indicator */
+.priority-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.priority-high {
+  background: var(--danger);
+}
+
+.priority-medium {
+  background: #f59e0b;
+}
+
+.priority-low {
+  background: var(--success);
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 1024px) {
+  .request-card-container {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .card-info-row {
+    font-size: 11px;
+  }
+
+  .card-action-btn {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .request-card-container {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .card-header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-status {
+    align-self: flex-start;
+  }
+
+  .card-title {
+    font-size: 13px;
+  }
+
+  .card-request-id {
+    font-size: 10px;
+  }
+
+  .card-info {
+    gap: 6px;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .card-meta {
+    width: 100%;
+  }
+
+  .card-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .request-card-container {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .card-title-section {
+    min-width: 0;
+  }
+
+  .card-title {
+    font-size: 12px;
+  }
+
+  .card-request-id {
+    font-size: 9px;
+  }
+
+  .card-status {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .card-info {
+    gap: 5px;
+    padding: 8px 0;
+  }
+
+  .card-info-row {
+    font-size: 10px;
+  }
+
+  .card-progress-section {
+    gap: 4px;
+  }
+
+  .progress-label {
+    font-size: 10px;
+  }
+
+  .card-footer {
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .card-meta {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .card-actions {
+    gap: 4px;
+  }
+
+  .card-action-btn {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+}
