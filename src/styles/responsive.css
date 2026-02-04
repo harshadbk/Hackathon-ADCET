@@ -1,0 +1,274 @@
+/* =====================================================
+   GLOBAL DESIGN TOKENS
+===================================================== */
+:root {
+  --primary: #2563eb;
+  --accent: #0ea5e9;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 10px;
+}
+
+/* =====================================================
+   RESET & BASE
+===================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* =====================================================
+   TYPOGRAPHY (MOBILE FIRST)
+===================================================== */
+h1 { font-size: 1.3rem; font-weight: 600; }
+h2 { font-size: 1.1rem; font-weight: 600; }
+h3 { font-size: 1rem; font-weight: 500; }
+
+p,
+label {
+  font-size: 0.9rem;
+}
+
+.small {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* =====================================================
+   CONTAINER & GRID
+===================================================== */
+.container {
+  width: 100%;
+  padding: 12px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px;
+  border: 1px solid var(--border);
+}
+
+/* =====================================================
+   HEADER & NAVBAR
+===================================================== */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav.active {
+  display: flex;
+}
+
+.nav a,
+.nav button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+.btn {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--border);
+}
+
+/* =====================================================
+   FORMS
+===================================================== */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+/* =====================================================
+   DASHBOARD STATS
+===================================================== */
+.stat-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* =====================================================
+   LIST / TIMELINE
+===================================================== */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline .item {
+  background: var(--card);
+  padding: 10px;
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 12px;
+}
+
+/* =====================================================
+   TABLET (≥ 768px)
+===================================================== */
+@media (min-width: 768px) {
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+
+  .container {
+    padding: 16px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .btn {
+    width: auto;
+    padding: 10px 16px;
+  }
+}
+
+/* =====================================================
+   DESKTOP (≥ 1024px)
+===================================================== */
+@media (min-width: 1024px) {
+
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+
+  .container {
+    max-width: 1200px;
+    padding: 24px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 320px;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
