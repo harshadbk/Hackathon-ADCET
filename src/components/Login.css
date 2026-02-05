@@ -10,30 +10,40 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f2f4f7;
   color: #1f2937;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 /* ===============================
-   MAIN LAYOUT
+   MAIN LAYOUT - CENTERED STACK
 ================================ */
 .login-wrapper {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 /* ===============================
-   LEFT – GOVERNMENT INFO PANEL
+   GOVERNMENT INFO PANEL
 ================================ */
 .login-hero {
   background: #0b4f8a;
   color: #ffffff;
-  padding: 48px 56px;
-  display: flex;
-  align-items: center;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(11, 79, 138, 0.15);
 }
 
 .hero-content {
-  max-width: 520px;
+  width: 100%;
 }
 
 /* GOV HEADER */
@@ -41,12 +51,12 @@ body {
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 2px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   opacity: 0.95;
 }
 
 .hero-title2 {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 700;
   margin: 0 0 6px;
 }
@@ -66,7 +76,7 @@ body {
   font-size: 14px;
   line-height: 1.7;
   margin-bottom: 32px;
-  max-width: 460px;
+  max-width: 100%;
 }
 
 /* GOV FEATURE LIST */
@@ -79,33 +89,32 @@ body {
   padding: 12px 14px;
   font-size: 14px;
   font-weight: 500;
-
-  /* REQUIRED FIX */
   color: #000000;
   background-color: #ffffff;
-
-  border: 1px solid #d1d5db;   /* optional: govt-style border */
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
 }
 
 /* ===============================
-   RIGHT – AUTH PANEL
+   AUTH PANEL
 ================================ */
 .login-auth {
   background: #f8fafc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  width: 500px;
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* CARD */
 .auth-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 100%;
   background: #ffffff;
   border: 1px solid #cbd5e1;
   padding: 26px;
+  border-radius: 8px;
 }
 
 /* ===============================
@@ -116,6 +125,8 @@ body {
   grid-template-columns: 1fr 1fr;
   margin-bottom: 22px;
   border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .auth-tab {
@@ -124,11 +135,16 @@ body {
   border: none;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .auth-tab.active {
   background: #0b4f8a;
   color: white;
+}
+
+.auth-tab:hover:not(.active) {
+  background: #d1d5db;
 }
 
 /* ===============================
@@ -144,6 +160,7 @@ body {
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 4px;
+  display: block;
 }
 
 .form-input {
@@ -151,11 +168,14 @@ body {
   border: 1px solid #9ca3af;
   font-size: 14px;
   width: 100%;
+  border-radius: 4px;
+  transition: border-color 0.2s;
 }
 
 .form-input:focus {
   outline: none;
   border-color: #0b4f8a;
+  box-shadow: 0 0 0 3px rgba(11, 79, 138, 0.1);
 }
 
 /* ===============================
@@ -171,15 +191,19 @@ body {
   padding: 12px;
   cursor: pointer;
   background: #ffffff;
+  border-radius: 6px;
+  transition: all 0.2s;
 }
 
 .role-card-login:hover {
   background: #f1f5f9;
+  border-color: #0b4f8a;
 }
 
 .role-card-login.selected {
   background: #e6f0fa;
   border-color: #0b4f8a;
+  box-shadow: 0 0 0 3px rgba(11, 79, 138, 0.1);
 }
 
 .role-name-login {
@@ -205,10 +229,17 @@ body {
   font-weight: 600;
   border: none;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.auth-button:hover:not(:disabled) {
+  background: #094275;
 }
 
 .auth-button:disabled {
   opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* ===============================
@@ -220,75 +251,25 @@ body {
   font-size: 12px;
   background: #f0f9ff;
   border-left: 4px solid #0b4f8a;
+  border-radius: 4px;
 }
 
 /* ===============================
-   RESPONSIVE
-================================ */
-@media (max-width: 1024px) {
-  .login-wrapper {
-    grid-template-columns: 1fr;
-  }
-
-  .login-hero {
-    padding: 36px;
-    text-align: center;
-  }
-
-  .hero-content {
-    margin: auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-auth {
-    padding: 20px;
-  }
-
-  .auth-container {
-    padding: 20px;
-  }
-
-  .hero-title {
-    font-size: 28px;
-  }
-}
-
-.right-side-panel {
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  width: 400px;
-
-  background: #ffffff;
-  border-left: 2px solid #cbd5e1;
-
-  padding: 28px 26px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* 🔑 fills full height */
-
-  box-shadow: -6px 0 16px rgba(0, 0, 0, 0.15);
-  z-index: 5;
-}
-
-
-/* ================================
    INFO SECTIONS (BLUE CARDS)
 ================================ */
-
 .info-section {
   background: #0b5ed7; /* govt blue */
   color: #ffffff;
-
   padding: 16px 18px;
   border-radius: 8px;
-
   border-left: 5px solid #ffffff;
-
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.info-section:last-child {
+  margin-bottom: 0;
 }
 
 .info-section:hover {
@@ -334,12 +315,65 @@ body {
   font-weight: 700;
 }
 
-/* ================================
+/* ===============================
    RESPONSIVE
 ================================ */
-
 @media (max-width: 1024px) {
-  .right-side-panel {
-    display: none;
+  .login-hero,
+  .login-auth {
+    max-width: 700px;
+  }
+  
+  .hero-title2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-wrapper {
+    gap: 20px;
+  }
+  
+  .login-hero,
+  .login-auth {
+    padding: 30px 20px;
+  }
+  
+  .hero-title2 {
+    font-size: 28px;
+  }
+  
+  .auth-container {
+    padding: 20px;
+  }
+  
+  .auth-tabs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  .login-hero {
+    padding: 20px 16px;
+  }
+  
+  .login-auth {
+    padding: 20px 16px;
+  }
+  
+  .hero-title2 {
+    font-size: 24px;
+  }
+  
+  .auth-container {
+    padding: 16px;
+  }
+  
+  .role-grid-login {
+    grid-template-columns: 1fr;
   }
 }
