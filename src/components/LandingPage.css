@@ -1178,3 +1178,123 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(99,102,241,0.45);
 }
+
+/* ===== GLOBAL RESPONSIVE FIXES ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+
+/* ===== MOBILE FIRST GRIDS ===== */
+
+.landing-hero-container,
+.features-grid,
+.steps-grid,
+.roles-grid,
+.footer-content {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 480px) {
+
+  .hero-title {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .landing-logo-text {
+    font-size: 18px;
+  }
+
+  .landing-nav-container {
+    padding: 10px 14px;
+  }
+}
+@media (min-width: 600px) {
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .roles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+
+  .landing-hero-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .roles-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1400px) {
+
+  .landing-hero {
+    padding: 120px 40px;
+  }
+
+  .hero-title {
+    font-size: 56px;
+  }
+
+  .features-title,
+  .landing-how-it-works h2,
+  .landing-roles h2 {
+    font-size: 52px;
+  }
+}
+@media (max-width: 768px) {
+
+  .landing-nav-buttons {
+    gap: 8px;
+  }
+
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
