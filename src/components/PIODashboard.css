@@ -1,6 +1,4 @@
-/* ==============================
-   ROOT + GLOBAL RESET
-============================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,12 +12,10 @@ body {
   overflow-x: hidden;
 }
 
-/* ==============================
-   MAIN DASHBOARD CONTAINER
-============================== */
 .pio-dashboard-container {
   width: 100%;
-  max-width: 1400px;      /* ✅ desktop width */
+  max-width: 1400px;     
+
   margin: 0 auto;
   padding: 24px;
 }
@@ -149,34 +145,309 @@ body {
   margin-bottom: 12px;
 }
 
-/* ==============================
-   TABLET RESPONSIVE
-============================== */
-@media (max-width: 900px) {
+/* =====================================================
+   EXTRA LARGE SCREENS (1367px+)
+===================================================== */
+@media (min-width: 1367px) {
+  .pio-dashboard-container,
+  .dashboard-header {
+    max-width: 1500px;
+  }
+
+  .pio-content-grid {
+    grid-template-columns: 1fr 380px;
+  }
+}
+
+/* =====================================================
+   MEDIUM LAPTOPS (1025px – 1366px)
+===================================================== */
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .pio-dashboard-container,
+  .dashboard-header {
+    max-width: 1200px;
+    padding: 20px;
+  }
+
+  .pio-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .pio-content-grid {
+    grid-template-columns: 1fr 320px;
+    gap: 20px;
+  }
+}
+
+/* =====================================================
+   SMALL LAPTOPS / LARGE TABLETS (769px – 1024px)
+===================================================== */
+@media (max-width: 1024px) {
+  .pio-dashboard-container,
+  .dashboard-header {
+    max-width: 100%;
+    padding: 18px;
+  }
+
   .pio-stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
   .pio-content-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dashboard-header {
+    margin-bottom: 20px;
+  }
+
+  .pio-sidebar {
+    margin-top: 20px;
   }
 }
 
-/* ==============================
-   MOBILE RESPONSIVE
-============================== */
-@media (max-width: 600px) {
+/* =====================================================
+   TABLETS / LARGE PHONES (481px – 767px)
+===================================================== */
+@media (max-width: 767px) {
   .dashboard-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+    padding: 14px;
+  }
+
+  .dashboard-header button {
+    width: 100%;
+  }
+
+  .dashboard-header-left h1 {
+    font-size: 18px;
+  }
+
+  .dashboard-header-left p {
+    font-size: 13px;
   }
 
   .pio-stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .pio-stat-card {
+    padding: 16px;
+  }
+
+  .pio-stat-card h2 {
+    font-size: 24px;
+  }
+
+  .pio-stat-card h3 {
+    font-size: 13px;
   }
 
   .pio-dashboard-container {
     padding: 16px;
+  }
+
+  .pio-requests {
+    padding: 16px;
+  }
+
+  .pio-request-item {
+    padding: 14px;
+  }
+
+  .pio-sidebar {
+    padding: 16px;
+  }
+}
+
+/* =====================================================
+   MOBILE MEDIUM (401px – 480px)
+===================================================== */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .pio-dashboard-container {
+    padding: 14px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 18px;
+  }
+
+  .dashboard-header button {
+    width: 100%;
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  .dashboard-header-left h1 {
+    font-size: 16px;
+  }
+
+  .dashboard-header-left p {
+    font-size: 12px;
+  }
+
+  .pio-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .pio-stat-card {
+    padding: 14px;
+  }
+
+  .pio-stat-card h2 {
+    font-size: 22px;
+  }
+
+  .pio-stat-card h3 {
+    font-size: 12px;
+  }
+
+  .pio-requests {
+    padding: 14px;
+  }
+
+  .pio-request-item {
+    padding: 12px;
+  }
+
+  .pio-request-item h4 {
+    font-size: 14px;
+  }
+
+  .pio-request-item p {
+    font-size: 12px;
+  }
+
+  .pio-sidebar {
+    padding: 14px;
+  }
+
+  .pio-sidebar h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+/* =====================================================
+   MOBILE SMALL (321px – 400px)
+===================================================== */
+@media (max-width: 400px) {
+  .pio-dashboard-container {
+    padding: 12px;
+  }
+
+  .dashboard-header {
+    padding: 10px;
+    margin-bottom: 16px;
+  }
+
+  .dashboard-header-left h1 {
+    font-size: 15px;
+  }
+
+  .dashboard-header button {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .pio-stats-grid {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .pio-stat-card {
+    padding: 12px;
+  }
+
+  .pio-stat-card h2 {
+    font-size: 20px;
+  }
+
+  .pio-stat-card h3 {
+    font-size: 11px;
+  }
+
+  .pio-request-item {
+    padding: 10px;
+  }
+
+  .pio-request-item h4 {
+    font-size: 13px;
+  }
+
+  .pio-sidebar {
+    padding: 12px;
+  }
+}
+
+/* =====================================================
+   MOBILE EXTRA SMALL (max 320px)
+===================================================== */
+@media (max-width: 320px) {
+  .pio-dashboard-container {
+    padding: 10px;
+  }
+
+  .dashboard-header {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .dashboard-header-left h1 {
+    font-size: 14px;
+  }
+
+  .dashboard-header-left p {
+    font-size: 11px;
+  }
+
+  .dashboard-header button {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+
+  .pio-stats-grid {
+    gap: 8px;
+  }
+
+  .pio-stat-card {
+    padding: 10px;
+  }
+
+  .pio-stat-card h2 {
+    font-size: 18px;
+  }
+
+  .pio-stat-card h3 {
+    font-size: 10px;
+  }
+
+  .pio-request-item {
+    padding: 8px;
+  }
+
+  .pio-request-item h4 {
+    font-size: 12px;
+  }
+
+  .pio-request-item p {
+    font-size: 11px;
   }
 }

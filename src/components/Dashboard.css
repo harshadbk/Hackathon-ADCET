@@ -136,24 +136,230 @@
    RESPONSIVE
 ================================ */
 
+/* Tablet & Large Screens (1025px - 1440px) */
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .dashboard-container {
+    padding: 24px;
+  }
+
+  .dashboard-navbar h1 {
+    font-size: 20px;
+  }
+
+  .dashboard-stats {
+    gap: 16px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+}
+
+/* Tablet Portrait (768px - 1024px) */
 @media (max-width: 1024px) {
   .dashboard-stats {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
+
+  .dashboard-container {
+    padding: 20px;
+  }
+
+  .navbar-inner {
+    padding: 0 20px;
+  }
+
+  .dashboard-navbar h1 {
+    font-size: 20px;
+  }
+
+  .sidebar-card {
+    padding: 14px;
+    font-size: 12px;
+  }
 }
 
-@media (max-width: 600px) {
-  .dashboard-stats {
-    grid-template-columns: 1fr;
+/* Mobile Large (481px - 767px) */
+@media (max-width: 767px) {
+  .dashboard-navbar {
+    padding: 14px 0;
   }
 
   .navbar-inner {
     flex-direction: column;
     align-items: flex-start;
+    gap: 10px;
+    padding: 0 16px;
+  }
+
+  .dashboard-navbar h1 {
+    font-size: 18px;
+  }
+
+  .dashboard-navbar p {
+    font-size: 12px;
+  }
+
+  .navbar-actions {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .dashboard-container {
+    padding: 16px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .dashboard-grid {
+    gap: 20px;
+  }
+
+  .sidebar-card {
+    padding: 12px;
+    font-size: 11px;
+  }
+
+  .sidebar-card ul,
+  .sidebar-card ol {
+    padding-left: 16px;
+  }
+}
+
+/* Mobile Medium (401px - 480px) */
+@media (max-width: 480px) {
+  .dashboard-navbar {
+    padding: 12px 0;
+  }
+
+  .navbar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 0 14px;
+  }
+
+  .dashboard-navbar h1 {
+    font-size: 16px;
+  }
+
+  .dashboard-navbar p {
+    font-size: 11px;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .dashboard-container {
+    padding: 12px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .dashboard-grid {
+    gap: 16px;
+  }
+
+  .empty-state {
+    padding: 20px;
+  }
+
+  .sidebar-card {
+    padding: 10px;
+    font-size: 10px;
+  }
+}
+
+/* Mobile Small (321px - 400px) */
+@media (max-width: 400px) {
+  .navbar-inner {
+    padding: 0 12px;
+  }
+
+  .dashboard-navbar h1 {
+    font-size: 14px;
+  }
+
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .stat-card {
+    padding: 10px;
+  }
+
+  .stat-value {
+    font-size: 18px;
+  }
+
+  .dashboard-main h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+}
+
+/* Mobile Extra Small (max 320px) */
+@media (max-width: 320px) {
+  .navbar-inner {
+    padding: 0 10px;
+  }
+
+  .dashboard-container {
+    padding: 8px;
+  }
+
+  .dashboard-stats {
+    gap: 8px;
+  }
+
+  .stat-card {
+    padding: 8px;
+  }
+
+  .stat-value {
+    font-size: 16px;
+  }
+
+  .stat-label {
+    font-size: 9px;
   }
 }
