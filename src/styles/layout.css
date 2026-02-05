@@ -7,7 +7,9 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
   background: var(--bg);
+  overflow-x: hidden;
 }
 
 /* App Wrapper */
@@ -15,34 +17,54 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-/* Centered Container */
-.container {
-  max-width: 1400px;
+/* Main Content Wrapper */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+}
+
+/* Centered Container - Desktop First */
+.container {
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 28px;
   display: flex;
   flex-direction: column;
   flex: 1;
+  box-sizing: border-box;
 }
 
 .container-full {
-  max-width: 100%;
   width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0;
   display: flex;
   flex-direction: column;
   flex: 1;
+  box-sizing: border-box;
 }
 
 .container-narrow {
-  max-width: 1200px;
   width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -53,6 +75,7 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+  width: 100%;
 }
 
 /* Page Content */
@@ -61,6 +84,7 @@
   display: flex;
   flex-direction: column;
   padding: 28px 0;
+  width: 100%;
 }
 
 .page-content-full {
@@ -68,21 +92,14 @@
   display: flex;
   flex-direction: column;
   padding: 0;
+  width: 100%;
 }
 
 /* =====================================================
    RESPONSIVE CONTAINERS
 ===================================================== */
 
-/* Large Desktop (1200px+) */
-@media (max-width: 1400px) {
-  .container,
-  .container-narrow {
-    padding: 0 28px;
-  }
-}
-
-/* Desktop (1024px - 1199px) */
+/* Desktop (1024px and above) */
 @media (max-width: 1024px) {
   .container,
   .container-narrow {
@@ -130,7 +147,7 @@
   }
 }
 
-/* Small Mobile (<480px) */
+/* Small Mobile (<360px) */
 @media (max-width: 360px) {
   .container,
   .container-narrow {

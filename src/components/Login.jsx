@@ -1,90 +1,86 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './Login.css'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login({ onLogin }) {
-  const [isSignUp, setIsSignUp] = useState(false)
-  const [selectedRole, setSelectedRole] = useState(null)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
-  const navigate = useNavigate()
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   function handleLogin() {
     if (!selectedRole || !email.trim()) {
-      alert('Please select a role and enter an email')
-      return
+      alert("Please select a role and enter email");
+      return;
     }
-    
+
     const userData = {
       role: selectedRole,
       email,
-      name: isSignUp ? name : email.split('@')[0],
-      loginTime: new Date().toISOString()
-    }
-    
-    localStorage.setItem('rtia.user', JSON.stringify(userData))
-    onLogin(userData)
-    navigate('/dashboard')
+      name: isSignUp ? name : email.split("@")[0],
+      loginTime: new Date().toISOString(),
+    };
+
+    localStorage.setItem("rtia.user", JSON.stringify(userData));
+    onLogin?.(userData);
+    navigate("/dashboard");
   }
 
   const roles = [
-    { id: 'citizen', label: 'Citizen', icon: '👤', desc: 'File RTI requests & track status', color: '#3b82f6' },
-    { id: 'pio', label: 'PIO Officer', icon: '👨‍💼', desc: 'Respond to RTI requests', color: '#8b5cf6' },
-    { id: 'authority', label: 'Appellate Authority', icon: '⚖️', desc: 'Review appeals & cases', color: '#ec4899' }
-  ]
+    {
+      id: "citizen",
+      label: "Citizen",
+      desc: "File RTI applications and track status",
+    },
+    {
+      id: "pio",
+      label: "PIO Officer",
+      desc: "Respond to RTI requests",
+    },
+    {
+      id: "authority",
+      label: "Appellate Authority",
+      desc: "Handle appeals and review cases",
+    },
+  ];
 
   return (
     <div className="login-wrapper">
-      {/* Hero Section */}
+      {/* LEFT PANEL – INFORMATION */}
       <div className="login-hero">
         <div className="hero-content">
-          <div className="hero-logo">📋</div>
-          <h1 className="hero-title">RTI Assistant</h1>
-          <p className="hero-subtitle">Right to Information Portal</p>
+          <h1 className="hero-title2">RTI Assistant Portal</h1>
+
           <p className="hero-description">
-            Your digital companion for filing RTI requests, tracking appeals, and accessing government information with ease.
+            Official portal for filing Right to Information (RTI) applications,
+            tracking requests, and managing appeals in a transparent and
+            time-bound manner.
           </p>
-          
-          {/* Features */}
-          <div className="hero-features">
-            <div className="feature-item">
-              <span className="feature-icon">🤖</span>
-              <span>AI-Powered Drafting</span>
-            </div>
-            <div className="feature-item">
-              <span className="feature-icon">📊</span>
-              <span>Real-Time Tracking</span>
-            </div>
-            <div className="feature-item">
-              <span className="feature-icon">⚡</span>
-              <span>Fast Processing</span>
-            </div>
+
+          <div className="hero-features2">
+            <div className="feature-item2">✔ Online RTI Filing</div>
+            <div className="feature-item2">✔ Status Tracking</div>
+            <div className="feature-item2">✔ Secure & Transparent</div>
           </div>
         </div>
       </div>
 
-      {/* Auth Section */}
+      {/* RIGHT PANEL – LOGIN */}
       <div className="login-auth">
         <div className="auth-container">
-          {/* Toggle Tabs */}
+          {/* Tabs */}
           <div className="auth-tabs">
-            <button 
-              className={`auth-tab ${!isSignUp ? 'active' : ''}`}
-              onClick={() => {
-                setIsSignUp(false)
-                setName('')
-                setPassword('')
-              }}
+            <button
+              className={`auth-tab ${!isSignUp ? "active" : ""}`}
+              onClick={() => setIsSignUp(false)}
             >
               Sign In
             </button>
-            <button 
-              className={`auth-tab ${isSignUp ? 'active' : ''}`}
-              onClick={() => {
-                setIsSignUp(true)
-                setPassword('')
-              }}
+            <button
+              className={`auth-tab ${isSignUp ? "active" : ""}`}
+              onClick={() => setIsSignUp(true)}
             >
               Sign Up
             </button>
@@ -92,40 +88,34 @@ export default function Login({ onLogin }) {
 
           {/* Form */}
           <div className="auth-form">
-            {/* Sign Up Extra Fields */}
             {isSignUp && (
               <div className="form-group">
                 <label className="form-label">Full Name</label>
                 <input
                   type="text"
                   className="form-input"
-                  placeholder="John Doe"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
             )}
 
-            {/* Email */}
             <div className="form-group">
               <label className="form-label">Email Address</label>
               <input
                 type="email"
                 className="form-input"
-                placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
-            {/* Password */}
             {isSignUp && (
               <div className="form-group">
                 <label className="form-label">Password</label>
                 <input
                   type="password"
                   className="form-input"
-                  placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -134,19 +124,14 @@ export default function Login({ onLogin }) {
 
             {/* Role Selection */}
             <div className="form-group">
-              <label className="form-label">Select Your Role</label>
+              <label className="form-label">Select User Role</label>
               <div className="role-grid-login">
                 {roles.map((role) => (
                   <div
                     key={role.id}
-                    className={`role-card-login ${selectedRole === role.id ? 'selected' : ''}`}
+                    className={`role-card-login ${selectedRole === role.id ? "selected" : ""}`}
                     onClick={() => setSelectedRole(role.id)}
-                    style={{
-                      borderColor: selectedRole === role.id ? role.color : undefined,
-                      backgroundColor: selectedRole === role.id ? `${role.color}10` : undefined
-                    }}
                   >
-                    <div className="role-icon-login">{role.icon}</div>
                     <div className="role-name-login">{role.label}</div>
                     <div className="role-desc-login">{role.desc}</div>
                   </div>
@@ -154,26 +139,60 @@ export default function Login({ onLogin }) {
               </div>
             </div>
 
-            {/* Submit Button */}
             <button
               className="auth-button"
+              disabled={!email || !selectedRole}
               onClick={handleLogin}
-              disabled={!selectedRole || !email.trim()}
             >
-              {isSignUp ? 'Create Account' : 'Sign In'} as{' '}
-              {selectedRole ? roles.find(r => r.id === selectedRole)?.label : 'User'}
+              {isSignUp ? "Register" : "Login"}
             </button>
 
-            {/* Info Message */}
             <div className="auth-info">
-              <span className="info-icon">ℹ️</span>
-              <span className="info-text">
-                Demo login — no authentication required. Data stored locally for this session.
-              </span>
+              Demo version — authentication is simulated for demonstration
+              purposes.
             </div>
+          </div>
+        </div>
+        {/* Right Side Information Panel */}
+        <div className="right-side-panel">
+          <div className="info-section">
+            <h3>About RTI Act</h3>
+            <p>
+              The Right to Information Act, 2005 empowers citizens to seek
+              information from public authorities, promoting transparency and
+              accountability in governance.
+            </p>
+          </div>
+
+          <div className="info-section">
+            <h3>Key Timelines</h3>
+            <ul>
+              <li>
+                RTI Reply: <strong>30 days</strong>
+              </li>
+              <li>
+                Life & Liberty: <strong>48 hours</strong>
+              </li>
+              <li>
+                First Appeal: <strong>30 days</strong>
+              </li>
+              <li>
+                Second Appeal: <strong>90 days</strong>
+              </li>
+            </ul>
+          </div>
+
+          <div className="info-section">
+            <h3>Citizen Rights</h3>
+            <ul>
+              <li>✔ Access government records</li>
+              <li>✔ Track application status</li>
+              <li>✔ File appeals online</li>
+              <li>✔ Ensure accountability</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
