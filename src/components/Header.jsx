@@ -8,7 +8,7 @@ export default function Header({ onNavigate, onQuickDemo, onLogout, user }) {
 
   const handleNav = (path, view) => {
     navigate(path)
-    onNavigate(view)
+    onNavigate?.(view)
     setMenuOpen(false)
   }
 
@@ -16,10 +16,10 @@ export default function Header({ onNavigate, onQuickDemo, onLogout, user }) {
     <header className="header-wrapper">
       <div className="header-container">
 
-        {/* Brand */}
-        <div className="header-brand" onClick={() => navigate('/dashboard')} style={{ cursor: 'pointer' }}>
+        {/* LEFT: BRAND */}
+        <div className="header-brand" onClick={() => navigate('/dashboard')}>
           <div className="header-logo">📋</div>
-          <div className="header-text">
+          <div>
             <div className="header-title">RTI Assistant</div>
             <div className="header-subtitle">
               Right to Information Made Easy
@@ -27,7 +27,7 @@ export default function Header({ onNavigate, onQuickDemo, onLogout, user }) {
           </div>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* MOBILE TOGGLE */}
         <button
           className="header-mobile-toggle"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -35,55 +35,62 @@ export default function Header({ onNavigate, onQuickDemo, onLogout, user }) {
           ☰
         </button>
 
-        {/* Navigation */}
+        {/* NAV */}
         <nav className={`header-nav ${menuOpen ? 'active' : ''}`}>
-          <button onClick={() => handleNav('/dashboard', 'dashboard')} className="header-nav-btn">
-            🏠 Home
-          </button>
-          <button onClick={() => handleNav('/draft', 'draft')} className="header-nav-btn">
-            ✍️ New RTI
-          </button>
-          <button onClick={() => handleNav('/tracker', 'tracker')} className="header-nav-btn">
-            ⏰ Track
-          </button>
-          <button onClick={() => handleNav('/guide', 'guide')} className="header-nav-btn">
-            📚 Guide
-          </button>
-          <button onClick={() => handleNav('/faq', 'faq')} className="header-nav-btn">
-            ❓ FAQ
-          </button>
-          <button onClick={() => handleNav('/about', 'about')} className="header-nav-btn">
-            ℹ️ About
-          </button>
 
-          <button
-            className="header-nav-btn primary"
-            onClick={() => {
-              onQuickDemo()
-              setMenuOpen(false)
-            }}
-          >
-            🎯 Demo
-          </button>
+          {/* CENTER NAV */}
+          <div className="header-nav-group">
+            <button className="header-nav-btn" onClick={() => handleNav('/dashboard', 'dashboard')}>🏠 Home</button>
+            <button className="header-nav-btn" onClick={() => handleNav('/draft', 'draft')}>✍️ New RTI</button>
+            <button className="header-nav-btn" onClick={() => handleNav('/tracker', 'tracker')}>⏰ Track</button>
+            <button className="header-nav-btn" onClick={() => handleNav('/guide', 'guide')}>📚 Guide</button>
+            <button className="header-nav-btn" onClick={() => handleNav('/faq', 'faq')}>❓ FAQ</button>
+            <button className="header-nav-btn" onClick={() => handleNav('/about', 'about')}>ℹ️ About</button>
+          </div>
 
-          {user && (
-            <div className="header-user-menu">
-              <div className="header-user-avatar">
-                {user.email.charAt(0).toUpperCase()}
+          {/* RIGHT ACTIONS */}
+          <div className="header-nav-actions">
+
+            <button
+              className="header-nav-btn primary"
+              onClick={() => {
+                onQuickDemo?.()
+                setMenuOpen(false)
+              }}
+            >
+              🎯 Demo
+            </button>
+
+            {user && (
+              <div className="header-user">
+                <div className="header-user-avatar">
+                  {user.name
+                    ? user.name.charAt(0).toUpperCase()
+                    : user.email.charAt(0).toUpperCase()}
+                </div>
+
+                <div className="header-user-info">
+                  <div className="header-user-name">
+                    {user.name || 'User'}
+                  </div>
+                  <div className="header-user-email">
+                    {user.email}
+                  </div>
+                </div>
+
+                <button
+                  className="header-nav-btn logout"
+                  onClick={() => {
+                    onLogout?.()
+                    setMenuOpen(false)
+                  }}
+                >
+                  Logout
+                </button>
               </div>
-              <button
-                className="header-nav-btn"
-                onClick={() => {
-                  onLogout()
-                  setMenuOpen(false)
-                }}
-              >
-                Logout
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </nav>
-
       </div>
     </header>
   )
