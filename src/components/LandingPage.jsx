@@ -51,7 +51,11 @@ export default function LandingPage({ onLogin }) {
           </div>
 
           <div className="hero-image">
-            <div className="hero-visual">📊</div>
+            <img 
+              src="https://cjp.org.in/wp-content/uploads/2025/01/RTI-CJP-feature-image.jpg" 
+              alt="RTI Right to Information" 
+              className="hero-visual"
+            />
           </div>
         </div>
       </section>
